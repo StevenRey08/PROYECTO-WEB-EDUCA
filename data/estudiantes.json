@@ -1,0 +1,16 @@
+[
+  {
+    "id": "est_inicial_1",
+    "nombre": "Ana Pérez",
+    "curso": "1ro Básico",
+    "edad": 6,
+    "fechaRegistro": "2023-01-15T10:00:00.000Z"
+  },
+  {
+    "id": "est_inicial_2",
+    "nombre": "Carlos Gómez",
+    "curso": "3ro Medio",
+    "edad": 16,
+    "fechaRegistro": "2023-02-10T11:30:00.000Z"
+  }
+]

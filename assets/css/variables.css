@@ -1,0 +1,38 @@
+/* variables.css - Sistema de diseño (Equilibrio: Profesional, elegante y sobrio) */
+:root {
+    /* Paleta corporativa moderna (Azul Rey y Verde Esmeralda Suave) */
+    --color-primary: #2563EB;         /* Azul web clásico y elegante (True Blue) */
+    --color-primary-hover: #1D4ED8;   /* Azul más profundo al pasar el cursor */
+    --color-secondary: #0F766E;       /* Verde azulado (Teal) muy profesional */
+    --color-secondary-hover: #115E59; 
+    
+    /* Fondos y textos limpios (Gris Pizarra / Slate) */
+    --color-bg: #F8FAFC;              /* Blanco roto con un levísimo tono fresco */
+    --color-bg-card: #FFFFFF;         /* Blanco puro para las tarjetas */
+    --color-text-main: #1E293B;       /* Casi negro, para una lectura muy suave */
+    --color-text-muted: #64748B;      /* Gris intermedio para textos secundarios */
+    --color-border: #E2E8F0;          /* Gris claro para divisores sutiles */
+    
+    /* Tipografía nativa del sistema (Se ve hermosa en Windows/Mac sin cargar fuentes externas) */
+    --font-family-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    
+    /* Espaciado estructurado */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    
+    /* Bordes estéticos pero sin excesos */
+    --border-radius-sm: 0.25rem;
+    --border-radius-md: 0.5rem;
+    --border-radius-lg: 0.5rem;
+    
+    /* Sombras suaves y realistas (sin efecto de "brillo") */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+    
+    /* Transiciones naturales */
+    --transition-fast: 0.2s ease-in-out;
+}
