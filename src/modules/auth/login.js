@@ -84,9 +84,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             // 4. Éxito: Guardar sesión activa (usamos sessionStorage para que expire al cerrar la pestaña)
             sessionStorage.setItem('usuario_activo', JSON.stringify(usuarioAutenticado));
             
-            // Redirigir a la interfaz principal (Parte 4 - Panel de Estudiantes)
-            // Nota: Esta página será construida por el Desarrollador 4
-            window.location.href = 'estudiantes.html';
+            // 5. Redirigir según el rol del usuario
+            if (usuarioAutenticado.rol === 'admin') {
+                window.location.href = 'estudiantes.html'; // Panel de administrador
+            } else {
+                window.location.href = 'score.html'; // Panel del estudiante (solo sus datos)
+            }
 
         } catch (error) {
             // Manejo de errores: Si la promesa es rechazada (ej. credenciales incorrectas)

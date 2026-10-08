@@ -1,16 +1,202 @@
 [
   {
-    "id": "est_inicial_1",
+    "id": "est_01",
     "nombre": "Ana Pérez",
-    "curso": "1ro Básico",
-    "edad": 6,
+    "curso": "3ro Medio",
+    "edad": 16,
+    "correo": "ana@educa.com",
+    "clave": "estudiante123",
+    "scores": { "Matemáticas": 95, "Lenguaje": 88, "Ciencias": 92, "Historia": 90, "promedioTotal": 91.25 },
     "fechaRegistro": "2023-01-15T10:00:00.000Z"
   },
   {
-    "id": "est_inicial_2",
+    "id": "est_02",
     "nombre": "Carlos Gómez",
     "curso": "3ro Medio",
     "edad": 16,
+    "correo": "carlos@educa.com",
+    "clave": "estudiante123",
+    "scores": { "Matemáticas": 75, "Lenguaje": 80, "Ciencias": 78, "Historia": 85, "promedioTotal": 79.5 },
     "fechaRegistro": "2023-02-10T11:30:00.000Z"
+  },
+  {
+    "id": "est_03",
+    "nombre": "María Rodríguez",
+    "curso": "4to Medio",
+    "edad": 17,
+    "correo": "maria@educa.com",
+    "clave": "estudiante123",
+    "scores": { "Matemáticas": 100, "Lenguaje": 95, "Ciencias": 98, "Historia": 96, "promedioTotal": 97.25 },
+    "fechaRegistro": "2023-03-05T08:15:00.000Z"
+  },
+  {
+    "id": "est_04",
+    "nombre": "Juan López",
+    "curso": "2do Medio",
+    "edad": 15,
+    "correo": "juan@educa.com",
+    "clave": "estudiante123",
+    "scores": { "Matemáticas": 60, "Lenguaje": 70, "Ciencias": 65, "Historia": 75, "promedioTotal": 67.5 },
+    "fechaRegistro": "2023-03-12T09:45:00.000Z"
+  },
+  {
+    "id": "est_05",
+    "nombre": "Laura Martínez",
+    "curso": "1ro Medio",
+    "edad": 14,
+    "correo": "laura@educa.com",
+    "clave": "estudiante123",
+    "scores": { "Matemáticas": 85, "Lenguaje": 90, "Ciencias": 88, "Historia": 92, "promedioTotal": 88.75 },
+    "fechaRegistro": "2023-04-20T14:20:00.000Z"
+  },
+  {
+    "id": "est_06",
+    "nombre": "Pedro Sánchez",
+    "curso": "4to Medio",
+    "edad": 17,
+    "correo": "pedro@educa.com",
+    "clave": "estudiante123",
+    "scores": { "Matemáticas": 70, "Lenguaje": 65, "Ciencias": 75, "Historia": 80, "promedioTotal": 72.5 },
+    "fechaRegistro": "2023-05-18T10:30:00.000Z"
+  },
+  {
+    "id": "est_07",
+    "nombre": "Sofía Díaz",
+    "curso": "2do Medio",
+    "edad": 15,
+    "correo": "sofia@educa.com",
+    "clave": "estudiante123",
+    "scores": { "Matemáticas": 92, "Lenguaje": 94, "Ciencias": 90, "Historia": 88, "promedioTotal": 91.0 },
+    "fechaRegistro": "2023-06-22T11:10:00.000Z"
+  },
+  {
+    "id": "est_08",
+    "nombre": "Diego Fernández",
+    "curso": "3ro Medio",
+    "edad": 16,
+    "correo": "diego@educa.com",
+    "clave": "estudiante123",
+    "scores": { "Matemáticas": 88, "Lenguaje": 82, "Ciencias": 85, "Historia": 90, "promedioTotal": 86.25 },
+    "fechaRegistro": "2023-07-30T09:00:00.000Z"
+  },
+  {
+    "id": "est_09",
+    "nombre": "Valentina Torres",
+    "curso": "1ro Medio",
+    "edad": 14,
+    "correo": "valentina@educa.com",
+    "clave": "estudiante123",
+    "scores": { "Matemáticas": 96, "Lenguaje": 98, "Ciencias": 95, "Historia": 100, "promedioTotal": 97.25 },
+    "fechaRegistro": "2023-08-14T08:50:00.000Z"
+  },
+  {
+    "id": "est_10",
+    "nombre": "Mateo Ruiz",
+    "curso": "4to Medio",
+    "edad": 18,
+    "correo": "mateo@educa.com",
+    "clave": "estudiante123",
+    "scores": { "Matemáticas": 78, "Lenguaje": 75, "Ciencias": 80, "Historia": 72, "promedioTotal": 76.25 },
+    "fechaRegistro": "2023-09-05T13:40:00.000Z"
+  },
+  {
+    "id": "est_11",
+    "nombre": "Camila Castro",
+    "curso": "2do Medio",
+    "edad": 15,
+    "correo": "camila@educa.com",
+    "clave": "estudiante123",
+    "scores": { "Matemáticas": 85, "Lenguaje": 88, "Ciencias": 90, "Historia": 85, "promedioTotal": 87.0 },
+    "fechaRegistro": "2023-09-20T10:15:00.000Z"
+  },
+  {
+    "id": "est_12",
+    "nombre": "Joaquín Herrera",
+    "curso": "3ro Medio",
+    "edad": 16,
+    "correo": "joaquin@educa.com",
+    "clave": "estudiante123",
+    "scores": { "Matemáticas": 90, "Lenguaje": 85, "Ciencias": 92, "Historia": 88, "promedioTotal": 88.75 },
+    "fechaRegistro": "2023-10-10T14:50:00.000Z"
+  },
+  {
+    "id": "est_13",
+    "nombre": "Isabella Flores",
+    "curso": "1ro Medio",
+    "edad": 14,
+    "correo": "isabella@educa.com",
+    "clave": "estudiante123",
+    "scores": { "Matemáticas": 98, "Lenguaje": 96, "Ciencias": 99, "Historia": 95, "promedioTotal": 97.0 },
+    "fechaRegistro": "2023-11-02T09:30:00.000Z"
+  },
+  {
+    "id": "est_14",
+    "nombre": "Sebastián Medina",
+    "curso": "4to Medio",
+    "edad": 17,
+    "correo": "sebastian@educa.com",
+    "clave": "estudiante123",
+    "scores": { "Matemáticas": 65, "Lenguaje": 70, "Ciencias": 68, "Historia": 75, "promedioTotal": 69.5 },
+    "fechaRegistro": "2023-11-15T11:20:00.000Z"
+  },
+  {
+    "id": "est_15",
+    "nombre": "Martina Rojas",
+    "curso": "2do Medio",
+    "edad": 15,
+    "correo": "martina@educa.com",
+    "clave": "estudiante123",
+    "scores": { "Matemáticas": 92, "Lenguaje": 88, "Ciencias": 90, "Historia": 94, "promedioTotal": 91.0 },
+    "fechaRegistro": "2023-12-05T10:00:00.000Z"
+  },
+  {
+    "id": "est_16",
+    "nombre": "Tomás Silva",
+    "curso": "3ro Medio",
+    "edad": 16,
+    "correo": "tomas@educa.com",
+    "clave": "estudiante123",
+    "scores": { "Matemáticas": 80, "Lenguaje": 85, "Ciencias": 82, "Historia": 88, "promedioTotal": 83.75 },
+    "fechaRegistro": "2024-01-10T08:45:00.000Z"
+  },
+  {
+    "id": "est_17",
+    "nombre": "Antonia Morales",
+    "curso": "1ro Medio",
+    "edad": 14,
+    "correo": "antonia@educa.com",
+    "clave": "estudiante123",
+    "scores": { "Matemáticas": 95, "Lenguaje": 92, "Ciencias": 96, "Historia": 90, "promedioTotal": 93.25 },
+    "fechaRegistro": "2024-02-14T12:10:00.000Z"
+  },
+  {
+    "id": "est_18",
+    "nombre": "Benjamín Ortiz",
+    "curso": "4to Medio",
+    "edad": 17,
+    "correo": "benjamin@educa.com",
+    "clave": "estudiante123",
+    "scores": { "Matemáticas": 75, "Lenguaje": 78, "Ciencias": 70, "Historia": 80, "promedioTotal": 75.75 },
+    "fechaRegistro": "2024-03-01T09:25:00.000Z"
+  },
+  {
+    "id": "est_19",
+    "nombre": "Julieta Vargas",
+    "curso": "2do Medio",
+    "edad": 15,
+    "correo": "julieta@educa.com",
+    "clave": "estudiante123",
+    "scores": { "Matemáticas": 88, "Lenguaje": 90, "Ciencias": 85, "Historia": 92, "promedioTotal": 88.75 },
+    "fechaRegistro": "2024-03-20T10:50:00.000Z"
+  },
+  {
+    "id": "est_20",
+    "nombre": "Lucas Ríos",
+    "curso": "3ro Medio",
+    "edad": 16,
+    "correo": "lucas@educa.com",
+    "clave": "estudiante123",
+    "scores": { "Matemáticas": 82, "Lenguaje": 80, "Ciencias": 85, "Historia": 78, "promedioTotal": 81.25 },
+    "fechaRegistro": "2024-04-05T14:15:00.000Z"
   }
 ]
