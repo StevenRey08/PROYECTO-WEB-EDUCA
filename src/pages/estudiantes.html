@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Educa | Dashboard Admin</title>
+    <link rel="stylesheet" href="../../assets/css/reset.css">
+    <link rel="stylesheet" href="../../assets/css/variables.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/pages.css">
+</head>
+<body style="background-color: var(--color-bg);">
+    
+    <!-- Fondo animado de figuras flotantes -->
+    <div class="floating-bg">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+        <div class="shape shape-5"></div>
+        <div class="shape shape-6"></div>
+    </div>
+
+    <!-- Header Admin -->
+    <header id="header-container" style="background-color: white; padding: 1rem 2rem; border-bottom: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center;">
+        <div style="font-weight: 700; color: var(--color-primary); font-size: 1.2rem;">Proyecto Educa Admin</div>
+        <div>
+            <span id="admin-name" style="margin-right: 1rem; color: var(--color-text-muted); font-weight: 500;"></span>
+            <button id="btn-logout" class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">Cerrar Sesión</button>
+        </div>
+    </header>
+
+    <main class="main-content" style="padding: 2rem; display: flex; flex-direction: column; align-items: center; min-height: calc(100vh - 70px); max-width: 1200px; margin: 0 auto;">
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 2rem;">
+            <div>
+                <h1 style="color: var(--color-text-main); font-size: 2rem; margin-bottom: 0.5rem;">Panel de Estudiantes</h1>
+                <p style="color: var(--color-text-muted);">Administra la base de datos de los alumnos registrados.</p>
+            </div>
+            <button class="btn btn-primary">Nuevo Estudiante</button>
+        </div>
+
+        <div class="card" style="width: 100%; padding: 0; overflow-x: auto; box-shadow: var(--shadow-md);">
+            <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead style="background-color: #F8FAFC; border-bottom: 2px solid var(--color-border);">
+                    <tr>
+                        <th style="padding: 1rem; font-weight: 600; color: var(--color-text-muted);">ID</th>
+                        <th style="padding: 1rem; font-weight: 600; color: var(--color-text-muted);">Nombre</th>
+                        <th style="padding: 1rem; font-weight: 600; color: var(--color-text-muted);">Curso</th>
+                        <th style="padding: 1rem; font-weight: 600; color: var(--color-text-muted);">Edad</th>
+                        <th style="padding: 1rem; font-weight: 600; color: var(--color-text-muted);">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-body">
+                    <!-- Las filas se inyectan dinámicamente desde estudiantes.js -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- Modal de Visualización -->
+    <div id="modal-estudiante" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0, 0, 0, 0.4); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(4px);">
+        <div class="card" style="width: 100%; max-width: 500px; position: relative; max-height: 90vh; overflow-y: auto; box-shadow: var(--shadow-md);">
+            <button id="close-modal" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--color-text-muted);">&times;</button>
+            <h2 style="color: var(--color-primary); margin-bottom: 0.5rem; border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem; font-size: 1.3rem;">Información del Estudiante</h2>
+            
+            <div id="modal-content" style="margin-top: 1rem; line-height: 1.6; color: var(--color-text-main);">
+                <!-- Detalles inyectados por JS -->
+            </div>
+            
+            <div style="margin-top: 2rem; text-align: right;">
+                <button id="btn-modal-ok" class="btn btn-primary">Aceptar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Módulo JS del Dashboard -->
+    <script type="module" src="../modules/estudiantes/estudiantes.js"></script>
+</body>
+</html>
