@@ -52,20 +52,23 @@ const hashPassword = async (textoPlano) => {
  * y carga los estudiantes desde el archivo local JSON si no hay datos.
  */
 export const inicializarDB = async () => {
-    // 1. Inicializar usuario administrador si la colección no existe
+    // 1. Inicializar usuario administrador asegurando que el usuario "admin" exista
     let usuarios = leer(KEY_USUARIOS);
-    if (!usuarios || usuarios.length === 0) {
-        const adminPassHash = await hashPassword('admin123');
-        usuarios = [{
+    if (!usuarios) usuarios = [];
+
+    // Verificamos si el usuario 'admin' ya existe, si no, lo creamos
+    if (!usuarios.some(u => u.correo === 'admin')) {
+        const adminPassHash = await hashPassword('admin');
+        usuarios.push({
             id: generarId('usr'),
             nombre: 'Administrador Principal',
-            correo: 'admin@educa.com',
+            correo: 'admin', // Se usa como nombre de usuario
             clave: adminPassHash,
             rol: 'admin',
             fechaRegistro: new Date().toISOString()
-        }];
+        });
         guardar(KEY_USUARIOS, usuarios);
-        console.log('✅ DB Inicializada: Admin creado (admin@educa.com / admin123).');
+        console.log('✅ DB Inicializada: Usuario de prueba creado (admin / admin).');
     }
 
     // 2. Inicializar estudiantes desde data/estudiantes.json si la colección está vacía

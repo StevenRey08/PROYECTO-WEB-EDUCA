@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Educa | Iniciar Sesión</title>
+    
+    <!-- Enlace a los Estilos Globales -->
+    <link rel="stylesheet" href="../../assets/css/reset.css">
+    <link rel="stylesheet" href="../../assets/css/variables.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/pages.css">
+</head>
+<body style="background-color: var(--color-bg);">
+    <!-- Fondo animado de figuras flotantes (traído desde el inicio) -->
+    <div class="floating-bg">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+        <div class="shape shape-5"></div>
+        <div class="shape shape-6"></div>
+    </div>
+
+    <main class="main-content" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: var(--spacing-md);">
+        
+        <div class="card login-card" style="max-width: 400px; width: 100%;">
+            <div style="text-align: center; margin-bottom: var(--spacing-xl);">
+                <h1 style="color: var(--color-primary); font-size: 1.8rem; margin-bottom: var(--spacing-sm);">Bienvenido de nuevo</h1>
+                <p style="color: var(--color-text-muted);">Inicia sesión para continuar</p>
+            </div>
+            
+            <form id="login-form" autocomplete="off">
+                <div class="form-group">
+                    <label for="correo">Usuario o Correo</label>
+                    <input type="text" id="correo" name="correo" class="form-control" placeholder="admin" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="clave">Contraseña</label>
+                    <div style="position: relative;">
+                        <input type="password" id="clave" name="clave" class="form-control" placeholder="••••••••" required style="padding-right: 40px; width: 100%;">
+                        <button type="button" id="toggle-password" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: var(--color-text-muted); font-size: 1.2rem; padding: 0;" aria-label="Mostrar contraseña">
+                            <svg id="eye-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Contenedor para mostrar errores de validación o credenciales -->
+                <div id="error-message" style="color: #dc2626; font-size: 0.85rem; margin-bottom: var(--spacing-md); display: none; text-align: center; background-color: #fee2e2; padding: 8px; border-radius: var(--border-radius-sm);"></div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: var(--spacing-sm);">
+                    Iniciar Sesión
+                </button>
+            </form>
+            
+            <div style="text-align: center; margin-top: var(--spacing-lg); font-size: 0.9rem;">
+                <span style="color: var(--color-text-muted);">¿No tienes una cuenta?</span>
+                <a href="registro.html" style="color: var(--color-primary); text-decoration: none; font-weight: 500;">Regístrate</a>
+            </div>
+            
+            <div style="text-align: center; margin-top: var(--spacing-md); font-size: 0.9rem;">
+                <a href="../../index.html" style="color: var(--color-text-muted); text-decoration: none;">&larr; Volver al inicio</a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Lógica del Módulo de Login (ES6) -->
+    <script type="module" src="../modules/auth/login.js"></script>
+</body>
+</html>
