@@ -75,11 +75,29 @@ export const inicializarDB = async () => {
     let estudiantes = leer(KEY_ESTUDIANTES);
     if (!estudiantes || estudiantes.length === 0) {
         try {
-            const response = await fetch('/data/estudiantes.json');
+            // Usamos ruta relativa segura para páginas en src/pages/
+            const response = await fetch('../../data/estudiantes.json');
             if (response.ok) {
                 estudiantes = await response.json();
                 guardar(KEY_ESTUDIANTES, estudiantes);
-                console.log('✅ DB Inicializada: Colección de estudiantes cargada desde JSON.');
+                
+                // Además, importamos a todos estos estudiantes como usuarios para que puedan iniciar sesión
+                for (const est of estudiantes) {
+                    if (est.correo && est.clave && !usuarios.some(u => u.correo === est.correo)) {
+                        const hash = await hashPassword(est.clave);
+                        usuarios.push({
+                            id: est.id, // Reusamos su ID de estudiante para vincularlos
+                            nombre: est.nombre,
+                            correo: est.correo,
+                            clave: hash,
+                            rol: 'usuario', // Rol común
+                            fechaRegistro: est.fechaRegistro
+                        });
+                    }
+                }
+                guardar(KEY_USUARIOS, usuarios); // Guardamos la colección de usuarios actualizada
+
+                console.log('✅ DB Inicializada: Colección de estudiantes y sus credenciales cargadas desde JSON.');
             } else {
                 guardar(KEY_ESTUDIANTES, []);
             }
