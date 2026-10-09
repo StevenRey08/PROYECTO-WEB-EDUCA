@@ -11,6 +11,16 @@
 </head>
 <body style="background-color: var(--color-bg);">
     
+    <!-- Fondo animado -->
+    <div class="floating-bg">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+        <div class="shape shape-5"></div>
+        <div class="shape shape-6"></div>
+    </div>
+
     <header style="background-color: white; padding: 1rem 2rem; border-bottom: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center;">
         <div style="font-weight: 700; color: var(--color-secondary); font-size: 1.2rem;">Portal del Estudiante</div>
         <button id="btn-logout" class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">Cerrar Sesión</button>
@@ -19,19 +29,115 @@
     <main class="main-content" style="padding: 2rem; display: flex; justify-content: center; align-items: flex-start; min-height: calc(100vh - 70px);">
         
         <div class="card" style="max-width: 600px; width: 100%; text-align: center; padding: 3rem 2rem;">
+            <!-- Icono -->
             <div style="width: 80px; height: 80px; background-color: rgba(15, 118, 110, 0.1); color: var(--color-secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem auto;">
                 <svg width="40" height="40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"></path></svg>
             </div>
             
             <h1 style="color: var(--color-text-main); margin-bottom: 0.5rem; font-size: 1.8rem;">Bienvenido a tu perfil</h1>
-            <p style="color: var(--color-text-muted); margin-bottom: 2rem;">Hola <span id="student-name" style="font-weight: 700; color: var(--color-primary);"></span>, aquí puedes ver tu rendimiento.</p>
+            <p style="color: var(--color-text-muted); margin-bottom: 2rem;">Hola <span id="student-name" style="font-weight: 700; color: var(--color-primary);"></span>, completa tus datos para acceder a tu panel.</p>
             
-            <div style="background-color: #F8FAFC; border: 1px solid var(--color-border); border-radius: var(--border-radius-md); padding: 2rem;">
-                <h2 style="font-size: 3.5rem; color: var(--color-secondary); margin-bottom: 0.5rem; font-weight: 800;">A+</h2>
-                <p style="color: var(--color-text-muted); font-size: 0.95rem;">Rendimiento Académico Actual</p>
-                <div style="margin-top: 1rem; display: inline-block; padding: 0.4rem 1rem; background-color: #dcfce7; color: #166534; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">Excelente Desempeño</div>
+            <!-- ============================================ -->
+            <!-- ESTADO 1: Formulario de ingreso de datos     -->
+            <!-- (Solo visible si scores === null)             -->
+            <!-- ============================================ -->
+            <div id="estado-formulario" style="display: none;">
+                <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); border: 1px solid #f59e0b; border-radius: var(--border-radius-md); padding: 1rem; margin-bottom: 1.5rem;">
+                    <p style="color: #92400e; font-weight: 600; font-size: 0.9rem;">
+                        ⚠️ Es tu primera vez. Selecciona tu curso, edad e ingresa tus 4 calificaciones para continuar.
+                    </p>
+                </div>
+
+                <form id="scores-form" autocomplete="off" style="text-align: left;">
+                    
+                    <!-- Selección de Curso y Edad via Combobox -->
+                    <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                        <div class="form-group" style="flex: 1; margin-bottom: 0;">
+                            <label for="select-curso" style="font-weight: 600; color: var(--color-text-main); margin-bottom: 0.3rem; display: block;">Curso</label>
+                            <select id="select-curso" name="curso" class="form-control" required style="width: 100%; cursor: pointer;">
+                                <option value="" disabled selected>-- Selecciona un Curso --</option>
+                                <option value="1ro Medio">1ro Medio</option>
+                                <option value="2do Medio">2do Medio</option>
+                                <option value="3ro Medio">3ro Medio</option>
+                                <option value="4to Medio">4to Medio</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="flex: 1; margin-bottom: 0;">
+                            <label for="select-edad" style="font-weight: 600; color: var(--color-text-main); margin-bottom: 0.3rem; display: block;">Edad</label>
+                            <select id="select-edad" name="edad" class="form-control" required style="width: 100%; cursor: pointer;">
+                                <option value="" disabled selected>-- Selecciona Edad --</option>
+                                <option value="13">13 años</option>
+                                <option value="14">14 años</option>
+                                <option value="15">15 años</option>
+                                <option value="16">16 años</option>
+                                <option value="17">17 años</option>
+                                <option value="18">18 años</option>
+                                <option value="19">19 años</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <hr style="border: 0; border-top: 1px dashed var(--color-border); margin: 1.25rem 0;">
+
+                    <h3 style="font-size: 0.95rem; color: var(--color-text-main); margin-bottom: 1rem; text-align: center; font-weight: 600;">Calificaciones por Materia (0 a 100)</h3>
+
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <label for="nota-matematicas" style="font-weight: 600; color: var(--color-text-main); margin-bottom: 0.3rem; display: block;">Matemáticas</label>
+                        <input type="number" id="nota-matematicas" name="matematicas" class="form-control" placeholder="0 - 100" min="0" max="100" step="1" required style="width: 100%;">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <label for="nota-lenguaje" style="font-weight: 600; color: var(--color-text-main); margin-bottom: 0.3rem; display: block;">Lenguaje</label>
+                        <input type="number" id="nota-lenguaje" name="lenguaje" class="form-control" placeholder="0 - 100" min="0" max="100" step="1" required style="width: 100%;">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <label for="nota-ciencias" style="font-weight: 600; color: var(--color-text-main); margin-bottom: 0.3rem; display: block;">Ciencias</label>
+                        <input type="number" id="nota-ciencias" name="ciencias" class="form-control" placeholder="0 - 100" min="0" max="100" step="1" required style="width: 100%;">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <label for="nota-historia" style="font-weight: 600; color: var(--color-text-main); margin-bottom: 0.3rem; display: block;">Historia</label>
+                        <input type="number" id="nota-historia" name="historia" class="form-control" placeholder="0 - 100" min="0" max="100" step="1" required style="width: 100%;">
+                    </div>
+
+                    <!-- Error -->
+                    <div id="score-error" style="color: #dc2626; font-size: 0.85rem; margin-bottom: 1rem; display: none; text-align: center; background-color: #fee2e2; padding: 8px; border-radius: var(--border-radius-sm);"></div>
+
+                    <button type="submit" id="btn-guardar-notas" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">
+                        Guardar Registro
+                    </button>
+                </form>
             </div>
-            
+
+            <!-- ============================================ -->
+            <!-- ESTADO 2: Vista de solo lectura de notas     -->
+            <!-- (Visible una vez los datos fueron guardados) -->
+            <!-- ============================================ -->
+            <div id="estado-lectura" style="display: none;">
+                <!-- Información personal fijada -->
+                <div style="display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem; font-size: 0.95rem; color: var(--color-text-muted);">
+                    <div><strong>Curso:</strong> <span id="student-curso" style="color: var(--color-text-main); font-weight: 600;">—</span></div>
+                    <div><strong>Edad:</strong> <span id="student-edad" style="color: var(--color-text-main); font-weight: 600;">—</span></div>
+                </div>
+
+                <div style="background-color: #F8FAFC; border: 1px solid var(--color-border); border-radius: var(--border-radius-md); padding: 2rem;">
+                    <h2 id="score-letra" style="font-size: 3.5rem; color: var(--color-secondary); margin-bottom: 0.5rem; font-weight: 800;">—</h2>
+                    <p style="color: var(--color-text-muted); font-size: 0.95rem;">Rendimiento Académico Actual</p>
+                    <div id="score-badge" style="margin-top: 1rem; display: inline-block; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600;"></div>
+                </div>
+
+                <!-- Detalle de notas -->
+                <div style="background-color: #F8FAFC; border: 1px solid var(--color-border); border-radius: var(--border-radius-md); padding: 1.5rem; margin-top: 1.5rem; text-align: left;">
+                    <h3 style="font-size: 1rem; color: var(--color-text-main); margin-bottom: 0.75rem; text-align: center;">Calificaciones Registradas</h3>
+                    <div id="detalle-notas" style="color: var(--color-text-muted); font-size: 0.9rem;"></div>
+                    <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px dashed var(--color-border); text-align: center;">
+                        <span style="color: var(--color-primary); font-weight: 600; font-size: 1.1rem;">Promedio: <span id="score-promedio">—</span></span>
+                    </div>
+                </div>
+
+                <div style="margin-top: 1.5rem; background: linear-gradient(135deg, #dcfce7, #bbf7d0); border: 1px solid #86efac; border-radius: var(--border-radius-md); padding: 0.75rem;">
+                    <p style="color: #166534; font-size: 0.85rem; font-weight: 500;">🔒 Tus datos y notas han sido registrados y no pueden ser modificados.</p>
+                </div>
+            </div>
+
             <p style="margin-top: 2rem; font-size: 0.85rem; color: var(--color-text-muted);">Tus datos personales están protegidos de los demás estudiantes.</p>
         </div>
     </main>
