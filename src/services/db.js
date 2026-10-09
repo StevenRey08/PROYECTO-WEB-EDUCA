@@ -210,5 +210,49 @@ export const EstudiantesAPI = {
         
         guardar(KEY_ESTUDIANTES, filtrados);
         return simularRed({ success: true, id });
+    },
+
+    /**
+     * Busca un estudiante por su correo electrónico.
+     */
+    async obtenerPorCorreo(correo) {
+        const estudiantes = leer(KEY_ESTUDIANTES) || [];
+        const estudiante = estudiantes.find(e => e.correo === correo);
+        if (!estudiante) return simularRed(null, new Error('Estudiante no encontrado'));
+        return simularRed(estudiante);
+    },
+
+    /**
+     * Guarda las notas de un estudiante SOLO si aún no las tiene (scores === null).
+     * También permite actualizar su curso y edad si fueron seleccionados por primera vez.
+     * Calcula el promedio automáticamente. Una vez guardadas, son inmutables.
+     */
+    async guardarScores(id, nuevasNotas, datosPerfil = {}) {
+        const estudiantes = leer(KEY_ESTUDIANTES) || [];
+        const index = estudiantes.findIndex(e => e.id === id);
+
+        if (index === -1) return simularRed(null, new Error('Estudiante no encontrado'));
+
+        if (estudiantes[index].scores !== null) {
+            return simularRed(null, new Error('Las notas ya fueron registradas y no se pueden modificar.'));
+        }
+
+        const promedio = (
+            nuevasNotas['Matemáticas'] +
+            nuevasNotas['Lenguaje'] +
+            nuevasNotas['Ciencias'] +
+            nuevasNotas['Historia']
+        ) / 4;
+
+        estudiantes[index].scores = {
+            ...nuevasNotas,
+            promedioTotal: parseFloat(promedio.toFixed(2))
+        };
+
+        if (datosPerfil.curso) estudiantes[index].curso = datosPerfil.curso;
+        if (datosPerfil.edad) estudiantes[index].edad = Number(datosPerfil.edad);
+
+        guardar(KEY_ESTUDIANTES, estudiantes);
+        return simularRed(estudiantes[index]);
     }
 };

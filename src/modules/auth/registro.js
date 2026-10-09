@@ -6,7 +6,7 @@
 // Importamos validaciones utilitarias
 import { estaVacio, esEmailValido, esContrasenaSegura, contrasenasCoinciden } from '../../utils/validaciones.js';
 // Importamos la API de base de datos simulada
-import { AuthAPI, inicializarDB } from '../../services/db.js';
+import { AuthAPI, EstudiantesAPI, inicializarDB } from '../../services/db.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
     // Aseguramos la inicialización de la base de datos
@@ -81,7 +81,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             // 3. Crear el usuario en la DB simulada
             const usuarioNuevo = { nombre, correo, clave };
-            await AuthAPI.crearUsuario(usuarioNuevo);
+            const usuarioCreado = await AuthAPI.crearUsuario(usuarioNuevo);
+
+            // 3.5. Crear el registro de estudiante vinculado (sin notas aún)
+            await EstudiantesAPI.crear({
+                nombre,
+                correo,
+                curso: 'Sin asignar',
+                edad: null,
+                scores: null
+            });
 
             // 4. Éxito
             form.reset(); // Limpiar el formulario
