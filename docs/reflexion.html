@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nivel Final: Análisis del Proyecto y Reflexión Git | Proyecto Educa</title>
+    <link rel="stylesheet" href="../assets/css/reset.css">
+    <link rel="stylesheet" href="../assets/css/variables.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <style>
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text-main);
+            font-family: var(--font-family-main);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .report-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--color-border);
+            overflow: hidden;
+        }
+
+        .report-header {
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            color: #ffffff;
+            padding: 2.5rem 2rem;
+            position: relative;
+            border-bottom: 4px solid var(--color-primary);
+        }
+
+        .report-badge {
+            display: inline-block;
+            background: rgba(37, 99, 235, 0.2);
+            color: #93C5FD;
+            border: 1px solid rgba(147, 197, 253, 0.3);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 0.35rem 0.75rem;
+            border-radius: 9999px;
+            margin-bottom: 0.75rem;
+        }
+
+        .report-header h1 {
+            font-size: 1.85rem;
+            font-weight: 800;
+            margin: 0 0 0.5rem 0;
+            line-height: 1.25;
+        }
+
+        .report-header p {
+            color: #94A3B8;
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .actions-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            background: #F1F5F9;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .btn-download-pdf {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--color-primary);
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 0.65rem 1.25rem;
+            border-radius: var(--border-radius-md);
+            text-decoration: none;
+            transition: var(--transition-fast);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-download-pdf:hover {
+            background: var(--color-primary-hover);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: #ffffff;
+            color: var(--color-text-main);
+            border: 1px solid var(--color-border);
+            font-weight: 500;
+            font-size: 0.85rem;
+            padding: 0.6rem 1rem;
+            border-radius: var(--border-radius-md);
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .btn-secondary-action:hover {
+            background: #F8FAFC;
+            border-color: #CBD5E1;
+        }
+
+        .meta-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            padding: 1.25rem 2rem;
+            background: #FAF5FF;
+            border-bottom: 1px solid #E9D5FF;
+        }
+
+        .meta-item .meta-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #6B21A8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .meta-item .meta-value {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #3B0764;
+        }
+
+        .report-body {
+            padding: 2.5rem 2rem;
+        }
+
+        .callout-card {
+            background: #EFF6FF;
+            border: 1px solid #BFDBFE;
+            border-left: 5px solid var(--color-primary);
+            border-radius: var(--border-radius-md);
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .callout-title {
+            color: #1D4ED8;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .callout-quote {
+            font-style: italic;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #1E293B;
+            margin-bottom: 0.5rem;
+        }
+
+        .callout-desc {
+            font-size: 0.9rem;
+            color: #475569;
+            margin: 0;
+        }
+
+        .question-block {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .question-block:last-child {
+            border-bottom: none;
+            margin-bottom: 1rem;
+        }
+
+        .question-title {
+            display: flex;
+            align-items: baseline;
+            gap: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #0F172A;
+            margin-bottom: 1rem;
+        }
+
+        .question-badge {
+            background: var(--color-primary);
+            color: #ffffff;
+            font-size: 0.85rem;
+            font-weight: 800;
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .answer-lead {
+            font-size: 1rem;
+            color: #334155;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .point-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+
+        .point-item {
+            position: relative;
+            padding-left: 1.75rem;
+            font-size: 0.92rem;
+            color: #334155;
+        }
+
+        .point-item::before {
+            content: "•";
+            color: var(--color-primary);
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0.35rem;
+            top: -0.3rem;
+        }
+
+        .point-item strong {
+            color: #0F172A;
+        }
+
+        .table-wrapper {
+            margin: 2.5rem 0;
+            overflow-x: auto;
+            border-radius: var(--border-radius-md);
+            border: 1px solid var(--color-border);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: #0F172A;
+            color: #ffffff;
+            padding: 0.85rem 1rem;
+            font-weight: 600;
+        }
+
+        .comparison-table td {
+            padding: 0.85rem 1rem;
+            border-top: 1px solid var(--color-border);
+            vertical-align: top;
+        }
+
+        .comparison-table tr:nth-child(even) td {
+            background: #F8FAFC;
+        }
+
+        .text-danger {
+            color: #991B1B;
+            font-weight: 500;
+        }
+
+        .text-success {
+            color: #065F46;
+            font-weight: 600;
+        }
+
+        .verdict-box {
+            background: #ECFDF5;
+            border: 1px solid #A7F3D0;
+            border-left: 5px solid #059669;
+            border-radius: var(--border-radius-md);
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .verdict-title {
+            color: #065F46;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .verdict-text {
+            font-size: 0.9rem;
+            color: #1E293B;
+            margin: 0 0 1rem 0;
+        }
+
+        .signature-line {
+            font-size: 0.8rem;
+            color: #047857;
+            font-weight: 600;
+            border-top: 1px dashed #6EE7B7;
+            padding-top: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        @media print {
+            body {
+                padding: 0;
+                background: #ffffff;
+            }
+            .report-container {
+                box-shadow: none;
+                border: none;
+                max-width: 100%;
+            }
+            .actions-bar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="report-container">
+        <!-- HEADER -->
+        <header class="report-header">
+            <span class="report-badge">Proyecto Educa • Informe Técnico de Ingeniería</span>
+            <h1>NIVEL FINAL: Análisis del Proyecto</h1>
+            <p>Reflexión Técnica como Desarrollador Profesional sobre Gestión de Versiones con Git</p>
+        </header>
+
+        <!-- ACTION BAR -->
+        <section class="actions-bar">
+            <div>
+                <a href="../index.html" class="btn-secondary-action">
+                    ← Volver al Inicio
+                </a>
+            </div>
+            <div style="display: flex; gap: 0.75rem;">
+                <button onclick="window.print()" class="btn-secondary-action">
+                    🖨️ Imprimir / Guardar
+                </button>
+                <a href="Analisis_del_Proyecto_Git.pdf" download class="btn-download-pdf" id="btn-download-pdf">
+                    📥 Descargar PDF Oficial
+                </a>
+            </div>
+        </section>
+
+        <!-- METADATA -->
+        <section class="meta-strip">
+            <div class="meta-item">
+                <div class="meta-label">Desarrollador / Autor</div>
+                <div class="meta-value">MultiDEV (Ingeniero Titular)</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Repositorio GitHub</div>
+                <div class="meta-value">StevenRey08/PROYECTO-WEB-EDUCA</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Flujo de Trabajo</div>
+                <div class="meta-value">Git Flow • 3 Capas Modulares</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Estado de la Misión</div>
+                <div class="meta-value" style="color: #059669;">Aprobado • Éxito Total</div>
+            </div>
+        </section>
+
+        <section class="report-body">
+            <!-- ELEMENTO MOTIVADOR -->
+            <div class="callout-card">
+                <div class="callout-title">★ Elemento Motivador del Nivel Final</div>
+                <div class="callout-quote">"Has sido contratado como desarrollador. Tu desempeño en esta misión determinará si el proyecto es exitoso."</div>
+                <p class="callout-desc">
+                    Como desarrollador contratado para liderar el Proyecto Educa, se implementó una estrategia rigurosa de control de versiones y modularización de software. Esta misión garantizó la entrega de los módulos de autenticación, administración y visualización de notas, estableciendo las bases de estabilidad, trazabilidad y escalabilidad indispensables para el éxito de la plataforma educativa.
+                </p>
+            </div>
+
+            <!-- PREGUNTA 1 -->
+            <article class="question-block">
+                <h2 class="question-title">
+                    <span class="question-badge">1</span>
+                    ¿Qué problemas tenía el proyecto sin Git?
+                </h2>
+                <p class="answer-lead">
+                    Sin un sistema de control de versiones distribuido, el desarrollo del Proyecto Educa se encontraba expuesto a riesgos operativos críticos que amenazaban la viabilidad del software:
+                </p>
+                <ul class="point-list">
+                    <li class="point-item">
+                        <strong>Pérdida Crítica y Sobrescritura Accidental:</strong> Al trabajar en paralelo sobre archivos compartidos (tales como <code>login.js</code>, <code>db.js</code> o <code>index.html</code>), cualquier guardado manual sobreescribía los cambios previos de otros integrantes sin previo aviso ni mecanismo de reconciliación.
+                    </li>
+                    <li class="point-item">
+                        <strong>Falta Total de Trazabilidad e Imposibilidad de Rollback:</strong> Ante fallos inesperados en la persistencia local (<code>localStorage</code>) o en las reglas de validación de usuarios, era imposible retornar rápidamente a un estado previo funcional, obligando a reconstruir código a ciegas.
+                    </li>
+                    <li class="point-item">
+                        <strong>El Caos del Versionado Informal:</strong> La proliferación de archivos duplicados con nombres ambiguos (<code>index_final.html</code>, <code>script_v2_arreglado.js</code>) generaba discrepancias y desconfianza sobre cuál representaba la versión oficial y estable del sistema.
+                    </li>
+                    <li class="point-item">
+                        <strong>Bloqueo Operativo:</strong> Los desarrolladores debían turnarse o detenerse para no colisionar, ralentizando drásticamente la entrega de valor al usuario.
+                    </li>
+                </ul>
+            </article>
+
+            <!-- PREGUNTA 2 -->
+            <article class="question-block">
+                <h2 class="question-title">
+                    <span class="question-badge">2</span>
+                    ¿Cómo ayudó Git a organizar el trabajo?
+                </h2>
+                <p class="answer-lead">
+                    Git transformó el flujo de trabajo en una disciplina de ingeniería estructurada, predecible y segura:
+                </p>
+                <ul class="point-list">
+                    <li class="point-item">
+                        <strong>Historial Inmutable con Commits Atómicos:</strong> Cada modificación fue empaquetada en unidades lógicas e independientes con prefijos semánticos estándar (<code>feat:</code>, <code>fix:</code>, <code>style:</code>, <code>refactor:</code>), facilitando auditorías claras.
+                    </li>
+                    <li class="point-item">
+                        <strong>Alineación con la Arquitectura en 3 Capas:</strong> Permitió segregar y evolucionar de forma limpia la <em>Presentación</em> (<code>src/pages</code>, <code>src/components</code>), la <em>Lógica</em> (<code>src/modules</code>) y los <em>Servicios de Datos</em> (<code>src/services/db.js</code>) sin acoplamientos indeseados.
+                    </li>
+                    <li class="point-item">
+                        <strong>Confianza y Libertad de Refactorización:</strong> El equipo pudo incorporar lógicas complejas —como el formulario dinámico de 4 notas con bloqueo automático para nuevos alumnos— con la certeza de poder revertir o ramificar sin arriesgar el funcionamiento existente.
+                    </li>
+                </ul>
+            </article>
+
+            <!-- PREGUNTA 3 -->
+            <article class="question-block">
+                <h2 class="question-title">
+                    <span class="question-badge">3</span>
+                    ¿Qué ventajas aporta el uso de ramas (branches)?
+                </h2>
+                <p class="answer-lead">
+                    El uso de ramas independientes constituyó la clave para la estabilidad del producto y la agilidad del equipo:
+                </p>
+                <ul class="point-list">
+                    <li class="point-item">
+                        <strong>Aislamiento por Funcionalidad (Feature Branching):</strong> Se diseñaron ramas específicas (<code>rama: login</code>, <code>rama: registro</code>, <code>rama: estudiantes</code>). Los experimentos y desarrollos incompletos permanecieron estrictamente aislados sin afectar a los demás módulos.
+                    </li>
+                    <li class="point-item">
+                        <strong>Blindaje de la Rama Principal (<code>main</code>):</strong> Se estableció como regla de oro que nadie comitea directamente a <code>main</code>. Esta rama se mantiene permanentemente en estado de producción estable.
+                    </li>
+                    <li class="point-item">
+                        <strong>Paralelismo y Concurrencia Real:</strong> Múltiples ingenieros pudieron programar al mismo tiempo la vista del portal del estudiante (<code>score.html</code>) y la consola de administración (<code>estudiantes.html</code>) de forma 100% independiente.
+                    </li>
+                    <li class="point-item">
+                        <strong>Integración y Resolución Controlada de Conflictos:</strong> Las operaciones <code>git merge</code> señalaron con precisión matemática las líneas en colisión, garantizando integraciones limpias y consensuadas.
+                    </li>
+                </ul>
+            </article>
+
+            <!-- PREGUNTA 4 -->
+            <article class="question-block">
+                <h2 class="question-title">
+                    <span class="question-badge">4</span>
+                    ¿Por qué es importante el historial de cambios (git log / commits)?
+                </h2>
+                <p class="answer-lead">
+                    El historial de Git representa la memoria institucional y el registro de auditoría de todo el ciclo de vida del software:
+                </p>
+                <ul class="point-list">
+                    <li class="point-item">
+                        <strong>Documentación Viva del Software:</strong> Un buen commit no solo expone qué líneas se alteraron, sino el contexto y la justificación de negocio detrás de cada decisión técnica.
+                    </li>
+                    <li class="point-item">
+                        <strong>Depuración Forense Rápida (<code>git blame</code> / <code>git bisect</code>):</strong> Frente a un bug introducido inadvertidamente en la capa de datos (<code>db.js</code>), el historial permite aislar el commit causante en minutos en vez de perder horas rastreando código.
+                    </li>
+                    <li class="point-item">
+                        <strong>Reversión Quirúrgica (<code>git revert</code>):</strong> Permite descartar un cambio problemático de manera limpia y sin alterar las mejoras válidas desarrolladas posteriormente.
+                    </li>
+                </ul>
+            </article>
+
+            <!-- PREGUNTA 5 -->
+            <article class="question-block">
+                <h2 class="question-title">
+                    <span class="question-badge">5</span>
+                    ¿Cómo se relaciona esto con el trabajo en equipo real?
+                </h2>
+                <p class="answer-lead">
+                    La experiencia en el Proyecto Educa simula fielmente la dinámica de los equipos de ingeniería de clase mundial:
+                </p>
+                <ul class="point-list">
+                    <li class="point-item">
+                        <strong>Estándar Universal de Colaboración:</strong> En las empresas de software, todo el flujo de trabajo orbita en torno a <em>Pull Requests</em> / <em>Merge Requests</em> y revisiones por pares (<em>Code Review</em>), asegurando que ninguna línea de código pase a producción sin consenso técnico.
+                    </li>
+                    <li class="point-item">
+                        <strong>Canalizaciones de CI/CD:</strong> Los repositorios modernos ejecutan pruebas automatizadas (linting, tests unitarios, empaquetado) con cada commit o fusión, blindando el producto contra regresiones.
+                    </li>
+                    <li class="point-item">
+                        <strong>Mitigación del Factor de Riesgo Humano (Bus Factor):</strong> Al residir el repositorio en la nube (GitHub), el conocimiento y el progreso están distribuidos y protegidos ante cualquier pérdida de hardware local.
+                    </li>
+                </ul>
+            </article>
+
+            <!-- MATRIZ COMPARATIVA -->
+            <section class="table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">Dimensión</th>
+                            <th style="width: 37.5%;">Sin Git (Desarrollo Tradicional)</th>
+                            <th style="width: 37.5%;">Con Git (Desarrollo Profesional)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Integridad del Código</strong></td>
+                            <td class="text-danger">Sobrescrituras continuas y pérdida involuntaria de trabajo entre integrantes.</td>
+                            <td class="text-success">Historial inmutable, commits atómicos y resolución deliberada de conflictos.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Estabilidad de Producción</strong></td>
+                            <td class="text-danger">Archivos con nombres informales (<code>final_v2.html</code>) con alto riesgo de regresiones.</td>
+                            <td class="text-success">Rama <code>main</code> permanentemente protegida y lista para despliegue.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Trazabilidad y Rollback</strong></td>
+                            <td class="text-danger">Imposible conocer autor o motivo de errores; reversión destructiva.</td>
+                            <td class="text-success">Auditoría forense mediante <code>git log</code>/<code>blame</code> y reversiones limpias.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Trabajo en Equipo</strong></td>
+                            <td class="text-danger">Bloqueos de trabajo en serie por miedo a alterar archivos comunes.</td>
+                            <td class="text-success">Paralelismo real mediante <em>Feature Branches</em> y <em>Pull Requests</em>.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- DICTAMEN FINAL -->
+            <div class="verdict-box">
+                <div class="verdict-title">DICTAMEN TÉCNICO Y EVALUACIÓN DE LA MISIÓN</div>
+                <p class="verdict-text">
+                    La implementación de Git en el <strong>Proyecto Educa</strong> no solo resolvió los problemas iniciales de concurrencia y desorganización, sino que elevó el estándar del producto a un nivel profesional e industrial. Como desarrollador contratado para esta misión, se certifica el éxito pleno de la arquitectura y la gobernanza del código.
+                </p>
+                <div class="signature-line">
+                    <span>Firma Técnica: MultiDEV (Desarrollador Profesional)</span>
+                    <span>Código de Auditoría: EDUCA-GIT-PRO-2026</span>
+                    <span>Octubre 2026</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>
